@@ -19,7 +19,7 @@ $ npm install -g cozval
 $ cozval COMMAND
 running command...
 $ cozval (-v|--version|version)
-cozval/0.0.0 linux-x64 node-v12.20.2
+cozval/0.0.1 linux-x64 node-v12.20.2
 $ cozval --help [COMMAND]
 USAGE
   $ cozval COMMAND
@@ -48,7 +48,7 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/blockstats.js](https://github.com/gotjoshua/cozval/blob/v0.0.0/src/commands/blockstats.js)_
+_See code: [src/commands/blockstats.js](https://github.com/gotjoshua/cozval/blob/v0.0.1/src/commands/blockstats.js)_
 
 ## `cozval help [COMMAND]`
 
@@ -83,5 +83,5 @@ DESCRIPTION
   Extra documentation goes here
 ```
 
-_See code: [src/commands/validator-addresses.js](https://github.com/gotjoshua/cozval/blob/v0.0.0/src/commands/validator-addresses.js)_
+_See code: [src/commands/validator-addresses.js](https://github.com/gotjoshua/cozval/blob/v0.0.1/src/commands/validator-addresses.js)_
 <!-- commandsstop -->
