@@ -1,0 +1,55 @@
+{
+  "name": "cozval",
+  "description": "cosmos validator utils",
+  "version": "0.0.0",
+  "author": "gotjoshua @gotjoshua",
+  "bin": {
+    "cozval": "./bin/run"
+  },
+  "bugs": "https://github.com/gotjoshua/cozval/issues",
+  "dependencies": {
+    "@oclif/command": "^1",
+    "@oclif/config": "^1",
+    "@oclif/plugin-help": "^3",
+    "@tendermint/sig": "^0.6.0",
+    "bech32": "^2.0.0",
+    "cosmos-lib": "^1.1.0",
+    "crypto-js": "^4.0.0"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "eslint": "^5.13",
+    "eslint-config-oclif": "^3.1",
+    "globby": "^10"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json",
+    "/src"
+  ],
+  "homepage": "https://github.com/gotjoshua/cozval",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "src/index.js",
+  "oclif": {
+    "commands": "./src/commands",
+    "bin": "cozval",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "gotjoshua/cozval",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint .",
+    "prepack": "oclif-dev manifest && oclif-dev readme",
+    "test": "echo NO TESTS",
+    "version": "oclif-dev readme && git add README.md"
+  }
+}
