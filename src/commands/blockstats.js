@@ -1,5 +1,5 @@
 const { Command, flags } = require('@oclif/command')
-const ValidatorAddressesCommand = new (require('./validator-addresses'))
+const ValidatorAddressesCommand = new (require('./addresses'))
 
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
@@ -22,7 +22,7 @@ class BlockstatsCommand extends Command {
     const endAt = Number(args.endAt) || 10,
       startAt = Number(args.startAt) || 0
 
-    this.log('block:', startAt,'=>', endAt)
+    // this.log('block:', startAt,'=>', endAt)
     let perf1 = performance.now()
     const { valMapHEX } = await ValidatorAddressesCommand.getValidatorMaps()
     let perf2 = performance.now()
@@ -62,13 +62,22 @@ class BlockstatsCommand extends Command {
     } // for eachHeight
 
     let fVals = Array.from(valMapHEX.values()).filter(eachVal => eachVal.blocks)
-    this.log(fVals)
+    // this.log(fVals)
     
     let perf3 = performance.now()
-    this.log('block:', startAt,'=>', endAt)
-    this.log('getValidatorMaps took',perf2-perf1,'ms')
-    this.log('block checking took',perf3-perf2,'ms')
-
+    // this.log('block:', startAt,'=>', endAt)
+    // this.log('getValidatorMaps took',perf2-perf1,'ms')
+    // this.log('block checking took',perf3-perf2,'ms')
+    const jsonReturn = JSON. stringify({
+      validators: fVals,
+      info: {
+        blockRange: [startAt, endAt],
+        getValidatorMaps_ms: perf2-perf1,
+        blockChecking_ms: perf3-perf2
+      }
+    })
+    this.log(jsonReturn)
+    return jsonReturn
   }
 }
 

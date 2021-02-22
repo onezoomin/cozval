@@ -14,7 +14,8 @@
     "@tendermint/sig": "^0.6.0",
     "bech32": "^2.0.0",
     "cosmos-lib": "^1.1.0",
-    "crypto-js": "^4.0.0"
+    "crypto-js": "^4.0.0",
+    "eslint-config-standard": "^16.0.2"
   },
   "devDependencies": {
     "@oclif/dev-cli": "^1",
