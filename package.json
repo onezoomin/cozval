@@ -1,7 +1,7 @@
 {
   "name": "cozval",
   "description": "cosmos validator utils",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "author": "gotjoshua @gotjoshua",
   "bin": {
     "cozval": "./bin/run"
