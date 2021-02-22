@@ -19,7 +19,7 @@ $ npm install -g cozval
 $ cozval COMMAND
 running command...
 $ cozval (-v|--version|version)
-cozval/0.0.1 linux-x64 node-v12.20.2
+cozval/0.0.1b linux-x64 node-v12.20.2
 $ cozval --help [COMMAND]
 USAGE
   $ cozval COMMAND
@@ -28,27 +28,7 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`cozval blockstats [ENDAT] [STARTAT]`](#cozval-blockstats-endat-startat)
 * [`cozval help [COMMAND]`](#cozval-help-command)
-* [`cozval validator-addresses`](#cozval-validator-addresses)
-
-## `cozval blockstats [ENDAT] [STARTAT]`
-
-Output 
-
-```
-USAGE
-  $ cozval blockstats [ENDAT] [STARTAT]
-
-OPTIONS
-  -n, --node=node  node to query
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/blockstats.js](https://github.com/gotjoshua/cozval/blob/v0.0.1/src/commands/blockstats.js)_
 
 ## `cozval help [COMMAND]`
 
@@ -66,22 +46,4 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
-
-## `cozval validator-addresses`
-
-Create map of all addresses 
-
-```
-USAGE
-  $ cozval validator-addresses
-
-OPTIONS
-  -n, --node=node  node to query
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/validator-addresses.js](https://github.com/gotjoshua/cozval/blob/v0.0.1/src/commands/validator-addresses.js)_
 <!-- commandsstop -->
