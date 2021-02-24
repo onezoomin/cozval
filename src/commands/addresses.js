@@ -6,7 +6,7 @@ const axios = require('axios')
 // var fs = require('fs')
 
 const { sha256 } = require("@cosmjs/crypto")
-const { Bech32, fromBase64 } = require("@cosmjs/encoding")
+const { Bech32, toHex, fromBase64 } = require("@cosmjs/encoding")
 const { encodeBech32Pubkey } = require("@cosmjs/launchpad")
 const cosmos = require('cosmos-lib')
 const { createAddress: createTendermintAddress } = require('@tendermint/sig')
@@ -73,18 +73,19 @@ class AddressesCommand extends Command {
         ed25519: eachTx.body.messages[0].pubkey
       }))
       valMapPK = new Map(valARR.map(eachVal => {
-        // const pubkey = {
+        // tendermintAminoJSONformat = {
         //   type: "tendermint/PubKeyEd25519",
         //   value: "iARPJIXVwen//D6qB5CoQT1KrTK7ffGOkIstFF3KIgk=",
-        // };
+        // }
+        // add tendermint format
         eachVal.ed25519.type = "tendermint/PubKeyEd25519"
         eachVal.ed25519.value = eachVal.ed25519.key
+
         const ed25519PubkeyRaw = fromBase64(eachVal.ed25519.key)
+        const addressBytes = sha256(ed25519PubkeyRaw).slice(0, 20)
 
-        eachVal.valcons = Bech32.encode("regen:valcons", sha256(ed25519PubkeyRaw).slice(0, 20))
-
-        eachVal.hex = (cosmos.address.getBytes(eachVal.valcons).toString('hex').toUpperCase())
-
+        eachVal.valcons = Bech32.encode("regen:valcons", addressBytes)
+        eachVal.hex = toHex(addressBytes).toUpperCase()
         eachVal.valconspub = encodeBech32Pubkey(eachVal.ed25519, "regen:valconspub")
 
         return [eachVal.ed25519.key, eachVal]
