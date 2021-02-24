@@ -1,5 +1,5 @@
 const { Command, flags } = require('@oclif/command')
-const ValidatorAddressesCommand = new (require('./addresses'))
+const ValidatorAddressesCommand = require('./addresses') //new (require('./addresses'))
 
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
@@ -62,6 +62,9 @@ class BlockstatsCommand extends Command {
     } // for eachHeight
 
     let fVals = Array.from(valMapHEX.values()).filter(eachVal => eachVal.blocks)
+    let top20 = fVals.filter(eachVal => eachVal.blocks.length > 0.8 * blocksChecked).sort((a, b) => a.blocksMissed - b.blocksMissed).slice(0,20)
+    let pp = top20.map(ev => ev.peer_node)
+    let ppm = top20.map(ev => ({[ev.moniker]:ev.blocksMissed}))
     // this.log(fVals)
     
     let perf3 = performance.now()
@@ -71,6 +74,8 @@ class BlockstatsCommand extends Command {
     const jsonReturn = JSON. stringify({
       validators: fVals,
       info: {
+        top20pp: pp,
+        top20ppm: ppm,
         blockRange: [startAt, endAt],
         getValidatorMaps_ms: perf2-perf1,
         blockChecking_ms: perf3-perf2
